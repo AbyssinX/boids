@@ -227,7 +227,7 @@ clampForce maxForce f =
   if norm f > maxForce
   then normalize f ^* maxForce
   else f
-  
+
 -- Compute the separation force for a single boid, based on nearby boids
 separationForce :: Boid -> [Boid] -> Force
 separationForce boid others =
@@ -242,8 +242,6 @@ separationForce boid others =
       where
         d = distanceEU p1 p2
         maxRepulsion = 1.5
-
-
 
 -- Alignment 
 
@@ -371,13 +369,13 @@ scalealignmen :: Float
 scalealignmen = 0.2
 
 visualRange:: Float
-visualRange = 0.8
+visualRange = 0.6
 
 protectedRange :: Float
 protectedRange = 0.15
 
 avoidfactor :: Float
-avoidfactor = 0.01 
+avoidfactor = 0.02
 
 centeringfactor :: Float
 centeringfactor = 0.2
