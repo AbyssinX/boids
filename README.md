@@ -9,3 +9,5 @@ He noticed that the flocking behavior is governed by three main rules:
 The parameters that amplify or suppress rules described above were chosen to appropriately simulate the flock of birds. However, those are tunable and can encode other animals' group motion. The color marks the speed of boids, ranging from yellow to red: the redder the color, the faster a boid moves.
 
 https://github.com/user-attachments/assets/dba34122-1085-414a-8c88-468cb8904d35
+
+Contributors: Alexey Sukhotin, Fiona McGrath, Laurentiu Georgian Vasilescu.
