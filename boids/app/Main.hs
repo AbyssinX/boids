@@ -114,7 +114,7 @@ resolveCollisions quadTree dt boid =
     adjustBoid otherBoid boid =
       let distance = norm (pos boid - pos otherBoid)
           repulsion = if distance < protectedRange
-                      then normalize (pos boid - pos otherBoid) ^* (avoidfactor / distance)
+                      then normalize (pos boid - pos otherBoid) ^* 0.00001 -- ^* (0.02*avoidfactor / distance)
                       else V2 0 0
           dampenedVel = vel boid + repulsion
       in boid { vel = clampSpeed dampenedVel }
@@ -241,14 +241,14 @@ separationForce boid others =
     smoothRepulsion p1 p2 = clampForce maxRepulsion $ normalize (p1 - p2) ^* (avoidfactor / (d * d + 0.01))
       where
         d = distanceEU p1 p2
-        maxRepulsion = 0.1
+        maxRepulsion = 0.04
 
 -- Alignment 
 
 alignmentForce :: Boid -> [Boid] -> Force
 alignmentForce boid boids =
     if count > 0
-    then (avgVel ^-^ vel boid) ^* scalealignmen  -- Scale alignment effect
+    then (avgVel ^-^ vel boid) ^* scalealignment  -- Scale alignment effect
     else V2 0 0
   where
     -- Gather velocities of nearby boids within alignmentDistance
@@ -365,8 +365,8 @@ detectCollisions quadTree boid depth
 -- Parameters
 --------------------------------------
 
-scalealignmen :: Float
-scalealignmen = 0.22
+scalealignment :: Float
+scalealignment = 0.09
 
 visualRange:: Float
 visualRange = 0.5
@@ -375,10 +375,10 @@ protectedRange :: Float
 protectedRange = 0.3
 
 avoidfactor :: Float
-avoidfactor = 0.005
+avoidfactor = 0.007
 
 centeringfactor :: Float
-centeringfactor = 0.1
+centeringfactor = 0.3
 
 turnfactor :: Float
 turnfactor = 0.037
