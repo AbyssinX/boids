@@ -248,7 +248,7 @@ separationForce boid others =
 alignmentForce :: Boid -> [Boid] -> Force
 alignmentForce boid boids =
     if count > 0
-    then (avgVel ^-^ vel boid) ^* scalealignment  -- Scale alignment effect
+    then (avgVel ^-^ vel boid) ^* scalealignmen  -- Scale alignment effect
     else V2 0 0
   where
     -- Gather velocities of nearby boids within alignmentDistance
@@ -365,8 +365,8 @@ detectCollisions quadTree boid depth
 -- Parameters
 --------------------------------------
 
-scalealignment :: Float
-scalealignment = 0.09
+scalealignmen :: Float
+scalealignmen = 0.2
 
 visualRange:: Float
 visualRange = 0.5
